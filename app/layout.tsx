@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     title: "F1x's Portfolio Website.",
     url: 'https://unknown',
     type: 'website',
-    images: ['https://goblintime.online/Logo.png'],
+    images: ['https:///Logo.png'],
   },
-  icons: 'https://goblintime.online/favicon.ico',
+  icons: 'https:///favicon.ico',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,10 +2,7 @@
 import React, { FC } from 'react';
 import ToggleTheme from '../global//ToggleTheme';
 import useScrollToSection from '../../hooks/useScroll';
-import Link from 'next/link';
-import { IoMdHome, IoMdShare } from 'react-icons/io';
-import { BsTelephoneOutboundFill } from 'react-icons/bs';
-import { FaStore } from 'react-icons/fa';
+import { FaCode, FaInfoCircle, FaPhone, FaTools } from 'react-icons/fa';
 
 const Navbar: FC = () => {
   const scrollToSection = useScrollToSection();
@@ -21,8 +18,8 @@ const Navbar: FC = () => {
           <span className="relative z-50 block px-5 py-3 overflow-hidden font-medium leading-tight text-primary transition-colors duration-300 ease-out border-2 border-accent rounded-lg group-hover:text-background ">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-background"></span>
             <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-primary group-hover:-rotate-180 ease"></span>
-            <p className="relative text-text font-bold text-2xl hidden flex-row justify-center lg:flex">Home</p>
-            <IoMdHome
+            <p className="relative text-text font-bold text-2xl hidden flex-row justify-center lg:flex">About</p>
+            <FaInfoCircle
               size={36}
               className="flex lg:hidden relative"
             />
@@ -55,7 +52,7 @@ const Navbar: FC = () => {
                  hidden flex-row lg:flex">
               Contact
             </p>
-            <IoMdShare
+            <FaPhone
               size={36}
               className="flex lg:hidden absolute items-center justify-center text-text dark:text-dtext font-bold text-2xl transition-all duration-300 transform group-hover:translate-y-full ease flex-row"
             />
@@ -83,7 +80,7 @@ const Navbar: FC = () => {
                  hidden flex-row lg:flex">
               Skills
             </p>
-            <IoMdShare
+            <FaTools
               size={36}
               className="flex lg:hidden absolute items-center justify-center text-text dark:text-dtext font-bold text-2xl transition-all duration-300 transform group-hover:translate-y-full ease flex-row"
             />
@@ -111,7 +108,7 @@ const Navbar: FC = () => {
                  hidden flex-row lg:flex">
               Projects
             </p>
-            <FaStore
+            <FaCode
               size={36}
               className="flex lg:hidden absolute items-center justify-center text-text dark:text-dtext font-bold text-2xl transition-all duration-300 transform group-hover:translate-y-full ease flex-row"
             />

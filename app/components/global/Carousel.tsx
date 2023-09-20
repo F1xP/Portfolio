@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { FC, useState, useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
@@ -11,51 +12,30 @@ type CarouselProps<T> = {
   type: string;
 };
 
-const Carousel: FC<CarouselProps<any>> = ({
-  items,
-  autoScrollInterval = 3000,
-  autoScrollEnabled = false,
-  isDark,
-  type,
-}) => {
+const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, autoScrollEnabled = false, isDark }) => {
   const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
-  const [videoWidth, setVideoWidth] = useState<number>(500);
 
   const goToNextItem = () => setCurrentItemIndex((prevIndex) => (prevIndex + 1) % items.length);
   const goToPrevItem = () => setCurrentItemIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
 
-  const handleResize = () => {
-    if (window.innerWidth <= 600 && window.innerWidth > 450) return setVideoWidth(300);
-    if (window.innerWidth <= 450) return setVideoWidth(200);
-    setVideoWidth(500);
-    console.log(window.innerWidth);
+  const handleDownload = () => {
+    const zipFileUrl = '/CamelBlackjack.zip';
+    const a = document.createElement('a');
+    a.href = zipFileUrl;
+    a.download = 'CamelBlackjack.zip';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
-
-  const debounce = (func: Function, delay: number) => {
-    let timer: any;
-    return () => {
-      clearTimeout(timer);
-      timer = setTimeout(func, delay);
-    };
-  };
-
-  useEffect(() => {
-    const debouncedResize = debounce(handleResize, 500);
-    debouncedResize();
-    window.addEventListener('resize', debouncedResize);
-    return () => {
-      window.removeEventListener('resize', debouncedResize);
-    };
-  }, []);
 
   useEffect(() => {
     let autoScrollTimer: NodeJS.Timeout | null = null;
 
-    if (autoScrollEnabled) autoScrollTimer = setInterval(goToNextItem, autoScrollInterval);
+    if (autoScrollEnabled) autoScrollTimer = setTimeout(goToNextItem, autoScrollInterval);
     return () => {
-      if (autoScrollTimer) clearInterval(autoScrollTimer);
+      if (autoScrollTimer) clearTimeout(autoScrollTimer);
     };
-  }, [autoScrollInterval, autoScrollEnabled]);
+  }, [autoScrollInterval, autoScrollEnabled, currentItemIndex]);
 
   return (
     <div className="relative z-20">
@@ -86,34 +66,65 @@ const Carousel: FC<CarouselProps<any>> = ({
             style={{
               transform: `translateX(-${currentItemIndex * 400}px)`,
             }}>
-            {items.map((item, index) => (
-              <div
-                key={index}
-                className={`group w-80 h-[470px] rounded-3xl cursor-pointer transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
-                  index === currentItemIndex ? 'scale-100' : 'scale-90'
-                }`}
-                style={{ width: `400px` }}>
-                <div className="w-full h-full rounded overflow-hidden relative">
-                  <div className="absolute inset-0 group-hover:scale-110 transition-all duration-500">
-                    <Image
-                      alt="Project Image"
-                      src={item.src}
-                      width={1000}
-                      height={1000}
-                      className="w-full h-[350px] object-cover rounded"
-                    />
+            {items.map((item, index) =>
+              item.name === 'Camel Blackjack' ? (
+                <button
+                  onClick={() => handleDownload()}
+                  className={`group w-80 h-[470px] rounded-3xl cursor-pointer transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
+                    index === currentItemIndex ? 'scale-100' : 'scale-90'
+                  }`}
+                  style={{ width: `400px` }}
+                  key={index}>
+                  <div className="w-full h-full rounded overflow-hidden relative">
+                    <div className="absolute inset-0 group-hover:scale-110 transition-all duration-500">
+                      <Image
+                        alt="Project Image"
+                        src={item.src}
+                        width={1000}
+                        height={1000}
+                        className="w-full h-[350px] object-cover rounded"
+                      />
+                    </div>
+                    <div className="h-[125px] w-full absolute inset-x-0 bottom-0 flex justify-center pb-4 flex-col items-center bg-background dark:bg-dbackground">
+                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
+                        {item.name}
+                      </p>
+                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
+                        {item.position}
+                      </p>
+                    </div>
                   </div>
-                  <div className="h-[125px] w-full absolute inset-x-0 bottom-0 flex justify-center pb-4 flex-col items-center bg-background dark:bg-dbackground">
-                    <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
-                      {item.name}
-                    </p>
-                    <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
-                      {item.position}
-                    </p>
+                </button>
+              ) : (
+                <Link
+                  href={item.link}
+                  key={index}
+                  className={`group w-80 h-[470px] rounded-3xl cursor-pointer transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
+                    index === currentItemIndex ? 'scale-100' : 'scale-90'
+                  }`}
+                  style={{ width: `400px` }}>
+                  <div className="w-full h-full rounded overflow-hidden relative">
+                    <div className="absolute inset-0 group-hover:scale-110 transition-all duration-500">
+                      <Image
+                        alt="Project Image"
+                        src={item.src}
+                        width={1000}
+                        height={1000}
+                        className="w-full h-[350px] object-cover rounded"
+                      />
+                    </div>
+                    <div className="h-[125px] w-full absolute inset-x-0 bottom-0 flex justify-center pb-4 flex-col items-center bg-background dark:bg-dbackground">
+                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
+                        {item.name}
+                      </p>
+                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
+                        {item.position}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </Link>
+              )
+            )}
           </div>
         </div>
       </div>

@@ -1,14 +1,16 @@
 'use client';
 import Link from 'next/link';
-import React, { FC } from 'react';
+import React, { FC, FormEvent } from 'react';
 import useScrollToSection from '../../hooks/useScroll';
-import { FaYoutube, FaDiscord, FaTwitter, FaDailymotion, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaDiscord, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 import Tooltip from '../global//Tooltip';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const tailwindClasses = {
   h1: 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-sans text-2xl font-bold mb-2',
-  div: 'flex flex-col items-start w-40',
+  div: 'flex flex-col items-start w-fit',
   link: 'font-sans text-xl font-bold hover:text-accent cursor-pointer transition-all duration-500',
 };
 
@@ -20,67 +22,51 @@ const Footer: FC = () => {
       <footer className="flex flex-col w-full items-center backdrop-blur-md shadow-xl bg-background dark:bg-dbackground justify-center border--2 border-primary text-text dark:text-dtext">
         <div className="flex flex-col p-4 px-16">
           <Message />
-          <div className="flex flex-row justify-center gap-10 flex-wrap">
+          <div className="flex flex-row justify-center gap-20 flex-wrap">
             <div className={tailwindClasses.div}>
               <h1 className={tailwindClasses.h1}>Sections</h1>
               <button
                 className={tailwindClasses.link}
                 onClick={() => scrollToSection('home')}>
-                Home
+                About
               </button>
               <button
                 className={tailwindClasses.link}
-                onClick={() => scrollToSection('shop')}>
-                Shop
+                onClick={() => scrollToSection('projects')}>
+                Projects
               </button>
               <button
                 className={tailwindClasses.link}
-                onClick={() => scrollToSection('social')}>
-                Follow
+                onClick={() => scrollToSection('skills')}>
+                Skills
+              </button>
+              <button
+                className={tailwindClasses.link}
+                onClick={() => scrollToSection('contact')}>
+                Contact
               </button>
             </div>
             <div className={tailwindClasses.div}>
-              <h1 className={tailwindClasses.h1}>Social</h1>
+              <h1 className={tailwindClasses.h1}>Socials</h1>
               <Link
                 className={tailwindClasses.link}
-                href={'/'}>
-                Youtube
-              </Link>
-              <Link
-                className={tailwindClasses.link}
-                href={'/'}>
-                {' '}
-                Twitter
-              </Link>
-              <Link
-                className={tailwindClasses.link}
-                href={'/'}>
-                {' '}
+                href={'https://discordapp.com/users/298961676148015104'}>
                 Discord
               </Link>
               <Link
                 className={tailwindClasses.link}
-                href={'/'}>
-                {' '}
-                DailyMotion
-              </Link>
-            </div>
-            <div className={tailwindClasses.div}>
-              <h1 className={tailwindClasses.h1}>Links</h1>
-              <Link
-                className={tailwindClasses.link}
-                href={'/'}>
-                Home
+                href={'https://twitter.com/F1xZZZ'}>
+                Twitter
               </Link>
               <Link
                 className={tailwindClasses.link}
-                href={'/privacy-policy'}>
-                Privacy Policy
+                href={'https://www.linkedin.com/in/lidor-ben-haim-31856626b/'}>
+                LinkedIn
               </Link>
               <Link
                 className={tailwindClasses.link}
-                href={'/privacy-policy'}>
-                Contact Me
+                href={'/https://github.com/F1xP'}>
+                GitHub
               </Link>
             </div>
           </div>
@@ -97,12 +83,49 @@ const Footer: FC = () => {
 export default Footer;
 
 const Message: FC = () => {
+  const handleMessage = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.target as typeof e.target & {
+      message: { value: string };
+    };
+    const message = target.message.value || '';
+    try {
+      const response = await fetch('/api/message', {
+        method: 'POST',
+        body: JSON.stringify({ message: message }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const responseData = await response.json();
+      if (!response.ok) {
+        toast.error(responseData?.error || 'An error occurred.', {
+          position: 'bottom-left',
+        });
+      } else {
+        localStorage.setItem('subbed', 'yes');
+        toast.success(responseData?.message || 'Thank you for subscribing!', {
+          position: 'bottom-left',
+        });
+      }
+    } catch (e) {
+      toast.error('An error occurred.', {
+        position: 'bottom-left',
+      });
+      console.error(e);
+    }
+  };
+
   return (
-    <div className="bg-primary text-dtext -translate-y-14 p-3 rounded-lg flex justify-between gap-6 flex-wrap items-center max-w-7xl">
+    <form
+      className="bg-primary text-dtext -translate-y-14 p-3 rounded-lg flex justify-between gap-6 flex-wrap items-center max-w-7xl"
+      onSubmit={handleMessage}>
       <p className="font-sans font-bold text-2xl sm:text-3xl mx-auto mb-1 whitespace-pre-line text-center">
         Send me a message.
       </p>
       <input
+        type="text"
+        name="message"
         placeholder="Your message..."
         className="text-lg sm:text-2xl flex-grow bg-text rounded-md outline-none placeholder:text-dtext text-dtext p-2.5 w-full"
       />
@@ -120,7 +143,7 @@ const Message: FC = () => {
         </span>
         <span className="relative text-xl">Send Message</span>
       </button>
-    </div>
+    </form>
   );
 };
 
@@ -132,7 +155,7 @@ const SocialMedia: FC = () => {
           icon={FaDiscord}
           class="shadow-discord/50 bg-discord"
           name="Discord"
-          link={'/https://discordapp.com/users/298961676148015104'}
+          link={'https://discordapp.com/users/298961676148015104'}
         />
       </div>
       <div className="flex flex-row gap-2">
@@ -140,7 +163,7 @@ const SocialMedia: FC = () => {
           icon={FaTwitter}
           class="shadow-twitter/50 bg-twitter"
           name="Twitter"
-          link={'/https://twitter.com/F1xZZZ'}
+          link={'https://twitter.com/F1xZZZ'}
         />
         <SocialMediaItem
           icon={FaLinkedin}
@@ -152,7 +175,7 @@ const SocialMedia: FC = () => {
           icon={FaGithub}
           class="shadow-github/50 bg-github"
           name="GitHub"
-          link={'/https://github.com/F1xP'}
+          link={'https://github.com/F1xP'}
         />
       </div>
     </div>

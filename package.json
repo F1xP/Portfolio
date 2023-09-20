@@ -20,6 +20,7 @@
     "eslint-config-next": "13.4.19",
     "googleapis": "^126.0.1",
     "next": "13.4.19",
+    "nodemailer": "^6.9.5",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dnd": "^16.0.1",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@types/nodemailer": "^6.4.10",
     "@types/xml2js": "^0.4.12"
   }
 }

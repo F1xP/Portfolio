@@ -29,7 +29,9 @@ const Skills: FC = () => {
           { src: '/DJS.svg', name: 'Discord.Js' },
         ].map((item) => {
           return (
-            <div className="h-52 w-52 bg-dbackground dark:bg-background rounded-xl hover:scale-105 transition-all duration-700 cursor-pointer flex justify-center flex-col items-center">
+            <div
+              key={item.name}
+              className="h-52 w-52 bg-dbackground dark:bg-background rounded-xl hover:scale-105 transition-all duration-700 cursor-pointer flex justify-center flex-col items-center">
               <Image
                 alt={item.name}
                 src={item.src}
