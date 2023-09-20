@@ -14,11 +14,9 @@ export const metadata: Metadata = {
   description: "F1x's Portfolio.",
   openGraph: {
     title: "F1x's Portfolio Website.",
-    url: 'https://unknown',
+    url: 'https://portfolio-f1xp.vercel.app/',
     type: 'website',
-    images: ['https:///Logo.png'],
   },
-  icons: 'https:///favicon.ico',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

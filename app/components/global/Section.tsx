@@ -1,5 +1,8 @@
 'use client';
 import React, { FC, ReactNode, useEffect, useState, useRef } from 'react';
+import localFont from 'next/font/local';
+
+const SegaFont = localFont({ src: '../../fonts/SEGA.ttf' });
 
 type SectionProps = {
   id: string;
@@ -108,11 +111,12 @@ const Section: FC<SectionProps> = ({
             id === 'contact' && 'mb-12'
           }`}>
           <h1
-            className={`font-extrabold text-5xl text-center font-sans ${
+            className={`${SegaFont.className} text-5xl text-center tracking-wide -translate-y-2 ${
               isTextDark ? 'text-dtext dark:text-text' : 'text-text dark:text-dtext'
             }  mb-6`}>
             {text1}{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-sans">
+            <span
+              className={`${SegaFont.className} text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent`}>
               {text2}
             </span>
           </h1>

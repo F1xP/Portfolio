@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { FC, useState, useEffect } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-
+import { BiSolidArrowToTop } from 'react-icons/bi';
 type CarouselProps<T> = {
   items: T[];
   autoScrollInterval?: number;
@@ -66,65 +66,49 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
             style={{
               transform: `translateX(-${currentItemIndex * 400}px)`,
             }}>
-            {items.map((item, index) =>
-              item.name === 'Camel Blackjack' ? (
-                <button
-                  onClick={() => handleDownload()}
-                  className={`group w-80 h-[470px] rounded-3xl cursor-pointer transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
+            {items.map((item, index) => (
+              <>
+                <div
+                  className={`w-80 h-[470px] rounded-3xl transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
                     index === currentItemIndex ? 'scale-100' : 'scale-90'
                   }`}
                   style={{ width: `400px` }}
                   key={index}>
                   <div className="w-full h-full rounded overflow-hidden relative">
-                    <div className="absolute inset-0 group-hover:scale-110 transition-all duration-500">
-                      <Image
-                        alt="Project Image"
-                        src={item.src}
-                        width={1000}
-                        height={1000}
-                        className="w-full h-[350px] object-cover rounded"
-                      />
+                    <div className="absolute inset-0 hover:scale-110 transition-all duration-500 cursor-pointer">
+                      {item.name === 'Camel Blackjack' ? (
+                        <button onClick={() => handleDownload()}>
+                          <Image
+                            alt="Project Image"
+                            src={item.src}
+                            width={1000}
+                            height={1000}
+                            className="w-full h-[360px] object-cover rounded"
+                          />
+                        </button>
+                      ) : (
+                        <Link href={item.link}>
+                          <Image
+                            alt="Project Image"
+                            src={item.src}
+                            width={1000}
+                            height={1000}
+                            className="w-full h-[360px] object-cover rounded"
+                          />
+                        </Link>
+                      )}
                     </div>
-                    <div className="h-[125px] w-full absolute inset-x-0 bottom-0 flex justify-center pb-4 flex-col items-center bg-background dark:bg-dbackground">
-                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
-                        {item.name}
-                      </p>
-                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
+                    <div className="h-auto w-full absolute inset-x-0 bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground">
+                      <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
+                      <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono mb-2">
                         {item.position}
                       </p>
+                      <AccordionComponent tech={item.tech}></AccordionComponent>
                     </div>
                   </div>
-                </button>
-              ) : (
-                <Link
-                  href={item.link}
-                  key={index}
-                  className={`group w-80 h-[470px] rounded-3xl cursor-pointer transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
-                    index === currentItemIndex ? 'scale-100' : 'scale-90'
-                  }`}
-                  style={{ width: `400px` }}>
-                  <div className="w-full h-full rounded overflow-hidden relative">
-                    <div className="absolute inset-0 group-hover:scale-110 transition-all duration-500">
-                      <Image
-                        alt="Project Image"
-                        src={item.src}
-                        width={1000}
-                        height={1000}
-                        className="w-full h-[350px] object-cover rounded"
-                      />
-                    </div>
-                    <div className="h-[125px] w-full absolute inset-x-0 bottom-0 flex justify-center pb-4 flex-col items-center bg-background dark:bg-dbackground">
-                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
-                        {item.name}
-                      </p>
-                      <p className="text-3xl text-text dark:text-dtext font-bold mt-3 small-caps font-mono">
-                        {item.position}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              )
-            )}
+                </div>
+              </>
+            ))}
           </div>
         </div>
       </div>
@@ -133,3 +117,66 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
 };
 
 export default Carousel;
+
+import { Accordion, AccordionItem as Item } from '@szhsin/react-accordion';
+
+type AccordionItemProps = {
+  header: string;
+  initialEntered: boolean;
+  children: React.ReactNode;
+};
+
+const AccordionItem: React.FC<AccordionItemProps> = ({ header, ...rest }) => (
+  <Item
+    {...rest}
+    header={({ state: { isEnter } }) => (
+      <>
+        <p className="text-dtext text-2xl font-mono font-bold whitespace-pre-line">{header}</p>
+        <BiSolidArrowToTop
+          size={30}
+          className={`ml-auto transition-all duration-500 ease-out rotate-0 text-dtext ${isEnter ? 'rotate-180' : ''}`}
+        />
+      </>
+    )}
+    buttonProps={{
+      className: ({ isEnter }) =>
+        `flex w-full p-2 text-left hover:bg-accent/50 transition-all duration-300 ${
+          isEnter ? 'bg-accent' : 'bg-accent'
+        }`,
+    }}
+    contentProps={{
+      className: 'transition-height duration-200 ease-out',
+    }}
+    panelProps={{ className: 'p-4' }}
+  />
+);
+
+type AccordionComponentProps = {
+  tech: string[];
+};
+
+const AccordionComponent: React.FC<AccordionComponentProps> = (props) => {
+  return (
+    <div className="w-full">
+      <Accordion transition>
+        <AccordionItem
+          header="Tech Utilized:"
+          initialEntered={false}>
+          <div className="flex flex-row flex-wrap items-center justify-center gap-2">
+            {props.tech.map((item: any) => {
+              return (
+                <Image
+                  alt={item.name}
+                  src={item.src}
+                  width={100}
+                  height={100}
+                  className="w-10 h-10 bg-dbackground dark:bg-background p-1 rounded-lg"
+                />
+              );
+            })}
+          </div>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  );
+};

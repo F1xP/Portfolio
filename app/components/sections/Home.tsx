@@ -11,7 +11,7 @@ const Home: FC = () => {
       isDark={false}
       isTextDark={false}
       divider="none"
-      animation="animate-up">
+      animation="animate-down">
       <div className="w-full h-fit flex justify-center z-20 flex-row items-center lg:flex-nowrap flex-wrap gap-10">
         <p className="font-bold text-xl font-sans italic text-text dark:text-dtext">
           I&apos;m a self-taught, versatile full-stack web developer with over 3.5 years of programming experience. I

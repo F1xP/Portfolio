@@ -33,7 +33,7 @@ const Footer: FC = () => {
               <button
                 className={tailwindClasses.link}
                 onClick={() => scrollToSection('projects')}>
-                Projects
+                Past Work
               </button>
               <button
                 className={tailwindClasses.link}
@@ -127,7 +127,7 @@ const Message: FC = () => {
         type="text"
         name="message"
         placeholder="Your message..."
-        className="text-lg sm:text-2xl flex-grow bg-text rounded-md outline-none placeholder:text-dtext text-dtext p-2.5 w-full"
+        className="text-lg sm:text-2xl flex-grow bg-dbackground dark:bg-background rounded-md outline-none placeholder:text-dtext text-dtext dark:text-text dark:placeholder:text-text p-2.5 w-full"
       />
       <button
         type="submit"

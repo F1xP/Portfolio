@@ -17,8 +17,8 @@ const Skills: FC = () => {
         {[
           { src: '/HTML.svg', name: 'HTML' },
           { src: '/CSS.svg', name: 'CSS' },
-          { src: '/JS.svg', name: 'JS' },
-          { src: '/TS.svg', name: 'TS' },
+          { src: '/JS.svg', name: 'Javascript' },
+          { src: '/TS.svg', name: 'Typescript' },
           { src: '/React.svg', name: 'ReactJs' },
           { src: '/Redux.svg', name: 'Redux' },
           { src: '/NextJS.svg', name: 'NextJS' },
@@ -27,6 +27,8 @@ const Skills: FC = () => {
           { src: '/PostgreSQL.svg', name: 'PostgreSQL' },
           { src: '/Tailwind.svg', name: 'Tailwind CSS' },
           { src: '/DJS.svg', name: 'Discord.Js' },
+          { src: '/Python.svg', name: 'Python' },
+          { src: '/PyGame.png', name: 'PyGame' },
         ].map((item) => {
           return (
             <div
