@@ -28,7 +28,7 @@ const Section: FC<SectionProps> = ({
   extraDivider = false,
 }) => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const [isInSection, setIsInSection] = useState(id === 'social' ? true : false);
+  const [isInSection, setIsInSection] = useState(false);
 
   useEffect(() => {
     const options = {

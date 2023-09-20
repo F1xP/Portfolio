@@ -157,14 +157,14 @@ const SocialMedia: FC = () => {
           name="Discord"
           link={'https://discordapp.com/users/298961676148015104'}
         />
-      </div>
-      <div className="flex flex-row gap-2">
         <SocialMediaItem
           icon={FaTwitter}
           class="shadow-twitter/50 bg-twitter"
           name="Twitter"
           link={'https://twitter.com/F1xZZZ'}
         />
+      </div>
+      <div className="flex flex-row gap-2">
         <SocialMediaItem
           icon={FaLinkedin}
           class="shadow-linkedin/50 bg-linkedin"

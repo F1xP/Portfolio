@@ -159,7 +159,7 @@ const AccordionComponent: React.FC<AccordionComponentProps> = (props) => {
     <div className="w-full">
       <Accordion transition>
         <AccordionItem
-          header="Tech Utilized:"
+          header="Tech Stack:"
           initialEntered={false}>
           <div className="flex flex-row flex-wrap items-center justify-center gap-2">
             {props.tech.map((item: any, index: number) => {
