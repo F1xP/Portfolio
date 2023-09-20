@@ -11,8 +11,8 @@ const ItemsArray = [
     position: 'Full-Stack',
     tech: [
       {
-        mame: 'NextJs',
-        src: '/NextJs.svg',
+        mame: 'NextJS',
+        src: '/NextJS.svg',
       },
       {
         mame: 'Typescript',
@@ -40,8 +40,8 @@ const ItemsArray = [
     position: 'Full-Stack',
     tech: [
       {
-        mame: 'ExpressJs',
-        src: '/ExpressJs.svg',
+        mame: 'ExpressJS',
+        src: '/ExpressJS.svg',
       },
       {
         mame: 'Javascript',
