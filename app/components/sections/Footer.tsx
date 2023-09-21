@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const tailwindClasses = {
   h1: 'text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-sans text-2xl font-bold mb-2',
   div: 'flex flex-col items-start w-fit',
-  link: 'font-sans text-xl font-bold hover:text-accent cursor-pointer transition-all duration-500',
+  link: 'font-sans text-xl font-bold hover:text-primary dark:hover:text-accent cursor-pointer transition-all duration-500',
 };
 
 const Footer: FC = () => {
