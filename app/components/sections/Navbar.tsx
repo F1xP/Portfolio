@@ -18,9 +18,9 @@ const Navbar: FC = () => {
         <button
           onClick={() => scrollToSection('home')}
           className="relative inline-block text-lg group w-20 lg:w-32">
-          <span className="relative z-50 block px-5 py-3 overflow-hidden leading-tight text-primary transition-colors duration-300 ease-out border-2 border-accent rounded-lg group-hover:text-background ">
+          <span className="relative z-50 block px-5 py-3 overflow-hidden leading-tight text-accent dark:text-primary transition-colors duration-300 ease-out border-2 border-primary dark:border-accent rounded-lg group-hover:text-background ">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-background"></span>
-            <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-primary group-hover:-rotate-180 ease"></span>
+            <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-accent dark:bg-primary group-hover:-rotate-180 ease"></span>
             <p className="relative text-text text-lg hidden flex-row justify-center lg:flex">About</p>
             <FaInfoCircle
               size={36}
@@ -28,17 +28,17 @@ const Navbar: FC = () => {
             />
           </span>
           <span
-            className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-primary rounded-lg group-hover:mb-0 group-hover:mr-0"
+            className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-accent dark:bg-primary rounded-lg group-hover:mb-0 group-hover:mr-0"
             data-rounded="rounded-lg"></span>
         </button>
         <div className="gap-1.5 sm:gap-5 items-center text-accent flex">
           <ToggleTheme />
           <button
             onClick={() => scrollToSection('contact')}
-            className="h-12 relative inline-flex flex-col items-center justify-center p-4 px-6 py-3 overflow-hidden transition duration-300 ease-out border-2 border-accent rounded-md shadow-md group w-12 lg:w-32">
+            className="h-12 relative inline-flex flex-col items-center justify-center p-4 px-6 py-3 overflow-hidden transition duration-300 ease-out border-2 border-primary dark:border-accent rounded-md shadow-md group w-12 lg:w-32">
             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-dbackground dark:bg-background group-hover:translate-y-0 ease">
               <svg
-                className="w-6 h-6 transform rotate-90 text-accent"
+                className="w-6 h-6 transform rotate-90 text-primary dark:text-accent"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -61,10 +61,10 @@ const Navbar: FC = () => {
           </button>
           <button
             onClick={() => scrollToSection('skills')}
-            className="h-12 relative inline-flex flex-col items-center justify-center p-4 px-6 py-3 overflow-hidden transition duration-300 ease-out border-2 border-accent rounded-md shadow-md group w-12 lg:w-32">
+            className="h-12 relative inline-flex flex-col items-center justify-center p-4 px-6 py-3 overflow-hidden transition duration-300 ease-out border-2 border-primary dark:border-accent rounded-md shadow-md group w-12 lg:w-32">
             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-dbackground dark:bg-background group-hover:translate-y-0 ease">
               <svg
-                className="w-6 h-6 transform rotate-90 text-accent"
+                className="w-6 h-6 transform rotate-90 text-primary dark:text-accent"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,10 +89,10 @@ const Navbar: FC = () => {
           </button>
           <button
             onClick={() => scrollToSection('projects')}
-            className="h-12 relative inline-flex flex-col items-center justify-center p-4 px-6 py-3 overflow-hidden transition duration-300 ease-out border-2 border-accent rounded-md shadow-md group w-12 lg:w-32">
+            className="h-12 relative inline-flex flex-col items-center justify-center p-4 px-6 py-3 overflow-hidden transition duration-300 ease-out border-2 border-primary dark:border-accent rounded-md shadow-md group w-12 lg:w-32">
             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-dbackground dark:bg-background group-hover:translate-y-0 ease">
               <svg
-                className="w-6 h-6 transform rotate-90  text-accent"
+                className="w-6 h-6 transform rotate-90 text-primary dark:text-accent"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

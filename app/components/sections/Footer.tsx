@@ -19,7 +19,7 @@ const Footer: FC = () => {
 
   return (
     <>
-      <footer className="flex flex-col w-full items-center backdrop-blur-md shadow-xl bg-background dark:bg-dbackground justify-center border--2 border-primary text-text dark:text-dtext">
+      <footer className="flex flex-col w-full items-center backdrop-blur-md shadow-xl bg-background dark:bg-dbackground justify-center border--2 text-text dark:text-dtext">
         <div className="flex flex-col p-4 px-16">
           <Message />
           <div className="flex flex-row justify-center gap-20 flex-wrap">
@@ -71,7 +71,7 @@ const Footer: FC = () => {
             </div>
           </div>
         </div>
-        <div className="h-fit p-2 flex flex-row w-full items-center border-t-2 border-primary bg-dbackground dark:bg-background text-dtext dark:text-text px-20 whitespace-pre-line">
+        <div className="h-fit p-2 flex flex-row w-full items-center border-t-2 border-primary dark:border-accent bg-dbackground dark:bg-background text-dtext dark:text-text px-20 whitespace-pre-line">
           <p className="mr-4">&copy; {new Date().getFullYear()} All rights reserved.</p>
           <SocialMedia />
         </div>
@@ -118,7 +118,7 @@ const Message: FC = () => {
 
   return (
     <form
-      className="bg-primary text-dtext -translate-y-14 p-3 rounded-lg flex justify-between gap-6 flex-wrap items-center max-w-7xl"
+      className="bg-primary dark:bg-accent text-dtext -translate-y-14 p-3 rounded-lg flex justify-between gap-6 flex-wrap items-center max-w-7xl"
       onSubmit={handleMessage}>
       <p className="font-sans font-bold text-2xl sm:text-3xl mx-auto mb-1 whitespace-pre-line text-center">
         Send me a message.
@@ -127,12 +127,12 @@ const Message: FC = () => {
         type="text"
         name="message"
         placeholder="Your message..."
-        className="text-lg sm:text-2xl flex-grow bg-dbackground dark:bg-background rounded-md outline-none placeholder:text-dtext text-dtext dark:text-text dark:placeholder:text-text p-2.5 w-full"
+        className="text-lg sm:text-2xl flex-grow bg-dbackground rounded-md outline-none placeholder:text-dtext text-dtex p-2.5 w-full"
       />
       <button
         type="submit"
-        className="mx-auto relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-accent border-2 border-accent rounded-md hover:text-white group hover:bg-gray-50 bg-dtext">
-        <span className="absolute left-0 block w-full h-0 transition-all bg-accent opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+        className="mx-auto relative inline-flex items-center px-12 py-3 overflow-hidden text-lg font-medium text-accent dark:text-primary border-2 border-accent dark:border-primary rounded-md hover:text-white group hover:bg-gray-50 dark:hover:text-white group dark:hover:bg-gray-50 bg-dtext">
+        <span className="absolute left-0 block w-full h-0 transition-all bg-accent dark:bg-primary opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
         <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
           <svg
             className="w-7 h-7 fill-dtext"

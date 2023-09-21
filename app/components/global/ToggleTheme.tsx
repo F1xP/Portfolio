@@ -33,13 +33,13 @@ const ToggleTheme: FC = () => {
         <FaSun
           size={45}
           onClick={() => toggleTheme()}
-          className="cursor-pointer hover:text-primary transition-all duration-500 hover:rotate-[360deg]"
+          className="cursor-pointer text-primary dark:text-accent hover:text-accent dark:hover:text-primary transition-all duration-500 hover:rotate-[360deg]"
         />
       ) : (
         <FaMoon
           size={40}
           onClick={() => toggleTheme()}
-          className="cursor-pointer hover:text-primary transition-all duration-500 hover:rotate-[360deg]"
+          className="cursor-pointer text-primary dark:text-accent hover:text-accent dark:hover:text-primary transition-all duration-500 hover:rotate-[360deg]"
         />
       )}
     </>

@@ -100,7 +100,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                 style={{ width: `${width}px` }}
                 key={item.name}>
                 <div className="w-full h-full rounded overflow-hidden relative">
-                  <div className="h-auto w-full absolute top-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground z-10 border-b border-accent dark:border-primary">
+                  <div className="h-auto w-full absolute top-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground z-10 border-b border-primary dark:border-accent">
                     <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
                   </div>
                   <div className="absolute inset-0 hover:scale-110 transition-all duration-500 cursor-pointer">
@@ -126,7 +126,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                       </Link>
                     )}
                   </div>
-                  <div className="h-auto w-full absolute bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground border-t border-accent dark:border-primary">
+                  <div className="h-auto w-full absolute bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground border-t border-primary dark:border-accent">
                     <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.position}</p>
                     <AccordionComponent tech={item.tech}></AccordionComponent>
                   </div>
