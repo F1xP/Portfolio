@@ -112,7 +112,9 @@ const Section: FC<SectionProps> = ({
             id === 'contact' && 'mb-12'
           }`}>
           <h1
-            className={`${SegaFont.className} text-5xl text-center tracking-wide -translate-y-2 ${
+            className={`${
+              SegaFont.className
+            } text-5xl flex flex-wrap justify-center gap-4 text-center tracking-wide -translate-y-2 ${
               isTextDark ? 'text-dtext dark:text-text' : 'text-text dark:text-dtext'
             }  mb-6`}>
             {text1}{' '}
