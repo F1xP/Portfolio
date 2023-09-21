@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { BiSolidArrowToTop } from 'react-icons/bi';
 
@@ -15,6 +15,8 @@ type CarouselProps<T> = {
 
 const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, autoScrollEnabled = false, isDark }) => {
   const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [stopScroll, setStopScroll] = useState<boolean>(false);
 
   const goToNextItem = () => setCurrentItemIndex((prevIndex) => (prevIndex + 1) % items.length);
   const goToPrevItem = () => setCurrentItemIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
@@ -30,13 +32,26 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
   };
 
   useEffect(() => {
-    let autoScrollTimer: NodeJS.Timeout | null = null;
+    const carouselElement = carouselRef.current;
+    if (!carouselElement) return;
+    carouselElement.addEventListener('mouseenter', () => setStopScroll(true));
+    carouselElement.addEventListener('mouseleave', () => setStopScroll(false));
 
-    if (autoScrollEnabled) autoScrollTimer = setTimeout(goToNextItem, autoScrollInterval);
+    return () => {
+      if (!carouselElement) return;
+      carouselElement.removeEventListener('mouseenter', () => setStopScroll(true));
+      carouselElement.removeEventListener('mouseleave', () => setStopScroll(false));
+    };
+  }, []);
+
+  useEffect(() => {
+    let autoScrollTimer: NodeJS.Timeout | null = null;
+    if (autoScrollEnabled && !stopScroll) autoScrollTimer = setTimeout(goToNextItem, autoScrollInterval);
+
     return () => {
       if (autoScrollTimer) clearTimeout(autoScrollTimer);
     };
-  }, [autoScrollInterval, autoScrollEnabled, currentItemIndex]);
+  }, [autoScrollInterval, autoScrollEnabled, currentItemIndex, stopScroll]);
 
   return (
     <div className="relative z-20">
@@ -63,6 +78,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
             marginLeft: `calc(50% - ${400 / 2 + 16}px)`,
           }}>
           <div
+            ref={carouselRef}
             className="flex justify-center w-fit transition-all duration-500"
             style={{
               transform: `translateX(-${currentItemIndex * 400}px)`,
@@ -75,6 +91,9 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                 style={{ width: `400px` }}
                 key={item.name}>
                 <div className="w-full h-full rounded overflow-hidden relative">
+                  <div className="h-auto w-full absolute top-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground z-10 border-b border-accent dark:border-primary">
+                    <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
+                  </div>
                   <div className="absolute inset-0 hover:scale-110 transition-all duration-500 cursor-pointer">
                     {item.name === 'Camel Blackjack' ? (
                       <button onClick={() => handleDownload()}>
@@ -83,7 +102,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                           src={item.src}
                           width={1000}
                           height={1000}
-                          className="w-full h-[360px] object-cover rounded"
+                          className="w-full h-[400px] object-cover rounded mt-8"
                         />
                       </button>
                     ) : (
@@ -93,16 +112,13 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                           src={item.src}
                           width={1000}
                           height={1000}
-                          className="w-full h-[360px] object-cover rounded"
+                          className="w-auto h-[395px] object-cover rounded mt-8"
                         />
                       </Link>
                     )}
                   </div>
-                  <div className="h-auto w-full absolute inset-x-0 bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground">
-                    <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
-                    <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono mb-2">
-                      {item.position}
-                    </p>
+                  <div className="h-auto w-full absolute bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground border-t border-accent dark:border-primary">
+                    <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.position}</p>
                     <AccordionComponent tech={item.tech}></AccordionComponent>
                   </div>
                 </div>
@@ -139,14 +155,12 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ header, ...rest }) => (
     )}
     buttonProps={{
       className: ({ isEnter }) =>
-        `flex w-full p-2 text-left hover:bg-accent/50 transition-all duration-300 ${
-          isEnter ? 'bg-accent' : 'bg-accent'
-        }`,
+        `flex w-full px-2 py-1 text-left hover:bg-accent/50 transition-all duration-300 bg-gradient-to-r from-primary to-accent`,
     }}
     contentProps={{
       className: 'transition-height duration-200 ease-out',
     }}
-    panelProps={{ className: 'p-4' }}
+    panelProps={{ className: 'p-3' }}
   />
 );
 
