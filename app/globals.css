@@ -41,7 +41,7 @@
 @keyframes animate-left {
   from {
     opacity: 0;
-    transform: translateX(-5000px);
+    transform: translateX(-1500px);
   }
   to {
     opacity: 1;
@@ -52,7 +52,7 @@
 @keyframes animate-right {
   from {
     opacity: 0;
-    transform: translateX(5000px);
+    transform: translateX(1500px);
   }
   to {
     opacity: 1;
@@ -61,16 +61,16 @@
 }
 
 .animate-up {
-  animation: animate-up 1s ease-in-out;
+  animation: animate-up 1.5s ease-in-out;
 }
 .animate-down {
-  animation: animate-down 1s ease-in-out;
+  animation: animate-down 1.5s ease-in-out;
 }
 .animate-right {
-  animation: animate-right 1s alternate;
+  animation: animate-right 1.5s ease-out;
 }
 .animate-left {
-  animation: animate-left 1s alternate;
+  animation: animate-left 1.5s ease-out;
 }
 
 .container {

@@ -44,7 +44,7 @@ const Section: FC<SectionProps> = ({
           observer.unobserve(entry.target);
         }
       },
-      { ...options, threshold: id === 'skills' ? 0.15 : 0.5 }
+      { ...options, threshold: id === 'skills' ? 0.15 : 0.6 }
     );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
