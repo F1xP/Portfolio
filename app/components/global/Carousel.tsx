@@ -67,14 +67,14 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
       <div className="flex justify-center flex-col overflow-hidden">
         <div className="flex flex-row gap-2 self-center">
           <div
-            className={`text-accent hover:text-primary transition-all duration-500 cursor-pointer rounded-full flex items-center justify-center p-1 hover:-translate-x-2 ${
+            className={`text-primary hover:text-accent dark:text-accent dark:hover:text-primary transition-all duration-500 cursor-pointer rounded-full flex items-center justify-center p-1 hover:-translate-x-2 ${
               isDark ? 'bg-dbackground dark:bg-background' : 'bg-background dark:bg-dbackground'
             }`}
             onClick={goToPrevItem}>
             <MdKeyboardArrowLeft size={35} />
           </div>
           <div
-            className={`text-accent hover:text-primary transition-all duration-500 cursor-pointer rounded-full flex items-center justify-center p-1 hover:translate-x-2 ${
+            className={`text-primary hover:text-accent dark:text-accent dark:hover:text-primary transition-all duration-500 cursor-pointer rounded-full flex items-center justify-center p-1 hover:translate-x-2 ${
               isDark ? 'bg-dbackground dark:bg-background' : 'bg-background dark:bg-dbackground'
             }`}
             onClick={goToNextItem}>
