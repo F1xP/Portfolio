@@ -1,14 +1,11 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-const EMAIL = process.env.EMAIL;
-const PASS = process.env.PASS;
-
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: EMAIL,
-    pass: PASS,
+    user: process.env.EMAIL!,
+    pass: process.env.PASS!,
   },
 });
 
@@ -18,8 +15,8 @@ export async function POST(request: Request) {
     const message = body.message;
     if (!message) return NextResponse.json({ error: 'Message can not be empty!' }, { status: 400 });
     const mailOptions = {
-      from: EMAIL,
-      to: EMAIL,
+      from: process.env.EMAIL!,
+      to: process.env.EMAIL!,
       subject: 'Portfoilio Message',
       html: `${message}`,
     };
