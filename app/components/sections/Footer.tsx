@@ -65,7 +65,7 @@ const Footer: FC = () => {
               </Link>
               <Link
                 className={tailwindClasses.link}
-                href={'/https://github.com/F1xP'}>
+                href={'https://github.com/F1xP'}>
                 GitHub
               </Link>
             </div>

@@ -34,17 +34,18 @@ const Section: FC<SectionProps> = ({
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5,
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) return;
           setIsInSection(true);
           observer.unobserve(entry.target);
         }
-      });
-    }, options);
+      },
+      { ...options, threshold: id === 'skills' ? 0.15 : 0.5 }
+    );
 
     if (sectionRef.current) observer.observe(sectionRef.current);
 
