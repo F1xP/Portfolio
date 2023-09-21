@@ -17,6 +17,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
   const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [stopScroll, setStopScroll] = useState<boolean>(false);
+  const [width, setWidth] = useState<number>(400);
 
   const goToNextItem = () => setCurrentItemIndex((prevIndex) => (prevIndex + 1) % items.length);
   const goToPrevItem = () => setCurrentItemIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
@@ -36,11 +37,19 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
     if (!carouselElement) return;
     carouselElement.addEventListener('mouseenter', () => setStopScroll(true));
     carouselElement.addEventListener('mouseleave', () => setStopScroll(false));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 550) return setWidth(300);
+      else setWidth(400);
+    });
 
     return () => {
       if (!carouselElement) return;
       carouselElement.removeEventListener('mouseenter', () => setStopScroll(true));
       carouselElement.removeEventListener('mouseleave', () => setStopScroll(false));
+      window.removeEventListener('resize', () => {
+        if (window.innerWidth < 550) return setWidth(300);
+        else setWidth(400);
+      });
     };
   }, []);
 
@@ -75,20 +84,20 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
         <div
           className="p-4"
           style={{
-            marginLeft: `calc(50% - ${400 / 2 + 16}px)`,
+            marginLeft: `calc(50% - ${width / 2 + 16}px)`,
           }}>
           <div
             ref={carouselRef}
             className="flex justify-center w-fit transition-all duration-500"
             style={{
-              transform: `translateX(-${currentItemIndex * 400}px)`,
+              transform: `translateX(-${currentItemIndex * width}px)`,
             }}>
             {items.map((item, index) => (
               <div
                 className={`w-80 h-[470px] rounded-3xl transform transition-transform duration-500 overflow-hidden relative flex-shrink-0 ${
                   index === currentItemIndex ? 'scale-100' : 'scale-90'
                 }`}
-                style={{ width: `400px` }}
+                style={{ width: `${width}px` }}
                 key={item.name}>
                 <div className="w-full h-full rounded overflow-hidden relative">
                   <div className="h-auto w-full absolute top-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground z-10 border-b border-accent dark:border-primary">
@@ -102,7 +111,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                           src={item.src}
                           width={1000}
                           height={1000}
-                          className="w-full h-[400px] object-cover rounded mt-8"
+                          className="w-full h-[395px] object-cover rounded mt-8"
                         />
                       </button>
                     ) : (
