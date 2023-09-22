@@ -26,3 +26,7 @@ export default async function middleware(request: NextRequest) {
 
   return NextResponse.json({ error: 'Rate limit exceeded. Please try again later.' }, { status: 429 });
 }
+
+export const config = {
+  matcher: '/message/:path*',
+};
