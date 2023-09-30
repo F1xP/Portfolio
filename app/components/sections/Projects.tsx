@@ -92,7 +92,7 @@ const ItemsArray = [
     name: 'DegiMe(Under Development)',
     link: 'https://degime.netlify.app/',
     src: '/DegiMe.png',
-    position: 'Front-End-Developer',
+    position: 'Front-End',
     tech: [
       {
         mame: 'React',
@@ -105,6 +105,39 @@ const ItemsArray = [
       {
         mame: 'Tailwind',
         src: '/Tailwind.svg',
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Gambling Website',
+    link: '',
+    src: '/Gambling.png',
+    position: 'Side-Project',
+    tech: [
+      {
+        mame: 'React',
+        src: '/React.svg',
+      },
+      {
+        mame: 'Javascript',
+        src: '/JS.svg',
+      },
+      {
+        mame: 'CSS',
+        src: '/CSS.svg',
+      },
+      {
+        mame: 'Redux',
+        src: '/Redux.svg',
+      },
+      {
+        mame: 'MongoDB',
+        src: '/MongoDB.svg',
+      },
+      {
+        mame: 'ExpressJS',
+        src: '/ExpressJS.svg',
       },
     ],
   },
