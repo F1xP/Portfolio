@@ -32,6 +32,7 @@ const ItemsArray = [
       },
     ],
   },
+
   {
     id: 2,
     name: 'Dynamic Job Finder',
@@ -83,6 +84,27 @@ const ItemsArray = [
       {
         mame: 'Python',
         src: '/Python.svg',
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'DegiMe(Under Development)',
+    link: 'https://degime.netlify.app/',
+    src: '/DegiMe.png',
+    position: 'Front-End-Developer',
+    tech: [
+      {
+        mame: 'React',
+        src: '/React.svg',
+      },
+      {
+        mame: 'Typescript',
+        src: '/TS.svg',
+      },
+      {
+        mame: 'Tailwind',
+        src: '/Tailwind.svg',
       },
     ],
   },
