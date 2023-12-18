@@ -17,7 +17,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
   const [currentItemIndex, setCurrentItemIndex] = useState<number>(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [stopScroll, setStopScroll] = useState<boolean>(false);
-  const [width, setWidth] = useState<number>(400);
+  const [width, setWidth] = useState<number>(700);
 
   const goToNextItem = () => setCurrentItemIndex((prevIndex) => (prevIndex + 1) % items.length);
   const goToPrevItem = () => setCurrentItemIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
@@ -38,8 +38,8 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
     carouselElement.addEventListener('mouseenter', () => setStopScroll(true));
     carouselElement.addEventListener('mouseleave', () => setStopScroll(false));
     window.addEventListener('resize', () => {
-      if (window.innerWidth < 550) return setWidth(300);
-      else setWidth(400);
+      if (window.innerWidth < 800) return setWidth(400);
+      else setWidth(700);
     });
 
     return () => {
@@ -47,8 +47,8 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
       carouselElement.removeEventListener('mouseenter', () => setStopScroll(true));
       carouselElement.removeEventListener('mouseleave', () => setStopScroll(false));
       window.removeEventListener('resize', () => {
-        if (window.innerWidth < 550) return setWidth(300);
-        else setWidth(400);
+        if (window.innerWidth < 800) return setWidth(400);
+        else setWidth(700);
       });
     };
   }, []);
@@ -99,37 +99,35 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                 }`}
                 style={{ width: `${width}px` }}
                 key={item.name}>
-                <div className="w-full h-full rounded overflow-hidden relative">
-                  <div className="h-auto w-full absolute top-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground z-10 border-b border-primary dark:border-accent mx-auto whitespace-pre-line">
-                    <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
-                  </div>
-                  <div className="absolute inset-0 hover:scale-110 transition-all duration-500 cursor-pointer">
-                    {item.name === 'Camel Blackjack' ? (
-                      <button onClick={() => handleDownload()}>
-                        <Image
-                          alt={item.name}
-                          src={item.src}
-                          width={1000}
-                          height={1000}
-                          className="w-full h-[395px] object-cover rounded mt-8"
-                        />
-                      </button>
-                    ) : (
-                      <Link href={item.link}>
-                        <Image
-                          alt={item.name}
-                          src={item.src}
-                          width={1000}
-                          height={1000}
-                          className="w-auto h-[395px] object-cover rounded mt-8"
-                        />
-                      </Link>
-                    )}
-                  </div>
-                  <div className="h-auto w-full absolute bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground border-t border-primary dark:border-accent">
-                    <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.position}</p>
-                    <AccordionComponent tech={item.tech}></AccordionComponent>
-                  </div>
+                <div className="h-auto w-full flex justify-center flex-col items-center bg-background dark:bg-dbackground border-b border-primary dark:border-accent mx-auto whitespace-pre-line">
+                  <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
+                </div>
+                <div className="transition-all duration-500 cursor-pointe">
+                  {item.name === 'Camel Blackjack' ? (
+                    <button onClick={() => handleDownload()}>
+                      <Image
+                        alt={item.name}
+                        src={item.src}
+                        width={1000}
+                        height={1000}
+                        className="w-full h-[395px] object-cover rounded"
+                      />
+                    </button>
+                  ) : (
+                    <Link href={item.link}>
+                      <Image
+                        alt={item.name}
+                        src={item.src}
+                        width={1000}
+                        height={1000}
+                        className="w-auto h-[395px] object-cover rounded"
+                      />
+                    </Link>
+                  )}
+                </div>
+                <div className="h-auto w-full absolute bottom-0 flex justify-center flex-col items-center bg-background dark:bg-dbackground border-t border-primary dark:border-accent">
+                  <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.position}</p>
+                  <AccordionComponent tech={item.tech}></AccordionComponent>
                 </div>
               </div>
             ))}

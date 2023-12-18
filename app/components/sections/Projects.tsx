@@ -5,6 +5,31 @@ import Section from '../global/Section';
 const ItemsArray = [
   {
     id: 1,
+    name: 'Camel Blackjack (Web)',
+    link: 'https://camelblackjack.vercel.app',
+    src: '/CamelBlackjackWeb.png',
+    position: 'Side-Project',
+    tech: [
+      {
+        mame: 'NextJS',
+        src: '/NextJS.svg',
+      },
+      {
+        mame: 'Typescript',
+        src: '/TS.svg',
+      },
+      {
+        mame: 'Tailwind CSS',
+        src: '/Tailwind.svg',
+      },
+      {
+        mame: 'MongoDB',
+        src: '/MongoDB.svg',
+      },
+    ],
+  },
+  {
+    id: 2,
     name: 'GoblinTime!',
     link: 'https://goblintime.online',
     src: '/GoblinTime.png',
@@ -34,7 +59,7 @@ const ItemsArray = [
   },
 
   {
-    id: 2,
+    id: 3,
     name: 'Dynamic Job Finder',
     link: 'https://dynamicjobfinder.online',
     src: '/DynamicJobFinder.png',
@@ -71,10 +96,10 @@ const ItemsArray = [
     ],
   },
   {
-    id: 3,
-    name: 'Camel Blackjack',
+    id: 4,
+    name: 'Camel Blackjack (Desktop)',
     link: '',
-    src: '/CamelBlackjack.png',
+    src: '/CamelBlackjackDesktop.png',
     position: 'Side-Project',
     tech: [
       {
@@ -88,7 +113,7 @@ const ItemsArray = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     name: 'DegiMe(Under Development)',
     link: 'https://degime.netlify.app/',
     src: '/DegiMe.png',
@@ -109,10 +134,10 @@ const ItemsArray = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     name: 'Gambling Website',
     link: '',
-    src: '/Gambling.png',
+    src: '/GamblingSite.png',
     position: 'Side-Project',
     tech: [
       {
