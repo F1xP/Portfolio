@@ -25,49 +25,40 @@ const Footer: FC = () => {
           <div className="flex flex-row justify-center gap-20 flex-wrap">
             <div className={tailwindClasses.div}>
               <h1 className={tailwindClasses.h1}>Sections</h1>
-              <button
-                className={tailwindClasses.link}
-                onClick={() => scrollToSection('home')}>
-                About
-              </button>
-              <button
-                className={tailwindClasses.link}
-                onClick={() => scrollToSection('projects')}>
-                Past Work
-              </button>
-              <button
-                className={tailwindClasses.link}
-                onClick={() => scrollToSection('skills')}>
-                Skills
-              </button>
-              <button
-                className={tailwindClasses.link}
-                onClick={() => scrollToSection('contact')}>
-                Contact
-              </button>
+              {[
+                { text: 'About', scrollTo: 'home' },
+                { text: 'Past Work', scrollTo: 'projects' },
+                { text: 'Skills', scrollTo: 'skills' },
+                { text: 'Contact', scrollTo: 'contact' },
+                { text: 'About', scrollTo: 'home' },
+              ].map((item, index) => {
+                return (
+                  <button
+                    key={index}
+                    className={tailwindClasses.link}
+                    onClick={() => scrollToSection(item.scrollTo)}>
+                    {item.text}
+                  </button>
+                );
+              })}
             </div>
             <div className={tailwindClasses.div}>
               <h1 className={tailwindClasses.h1}>Socials</h1>
-              <Link
-                className={tailwindClasses.link}
-                href={'https://discordapp.com/users/298961676148015104'}>
-                Discord
-              </Link>
-              <Link
-                className={tailwindClasses.link}
-                href={'https://twitter.com/F1xZZZ'}>
-                Twitter
-              </Link>
-              <Link
-                className={tailwindClasses.link}
-                href={'https://www.linkedin.com/in/lidor-ben-haim-31856626b/'}>
-                LinkedIn
-              </Link>
-              <Link
-                className={tailwindClasses.link}
-                href={'https://github.com/F1xP'}>
-                GitHub
-              </Link>
+              {[
+                { text: 'Discord', link: 'https://discordapp.com/users/298961676148015104' },
+                { text: 'Twitter', link: 'https://twitter.com/F1xZZZ' },
+                { text: 'LinkedIn', link: 'https://www.linkedin.com/in/lidor-ben-haim-31856626b/' },
+                { text: 'GitHub', link: 'https://github.com/F1xP' },
+              ].map((item, index) => {
+                return (
+                  <Link
+                    key={index}
+                    className={tailwindClasses.link}
+                    href={item.link}>
+                    {item.text}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
