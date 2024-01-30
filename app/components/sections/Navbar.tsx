@@ -13,7 +13,7 @@ const Navbar: FC = () => {
   return (
     <>
       <nav
-        className={`${SonicFont.className} sticky top-0 left-0 w-full backdrop-blur-md bg-background/30 dark:bg-dbackground/30 shadow-xl p-4 sm:px-16 flex justify-between items-center gap-5 h-24 animate-fade-in`}
+        className={`${SonicFont.className} sticky top-0 left-0 w-full backdrop-blur-md bg-background/30 dark:bg-dbackground/30 shadow-xl p-4 sm:px-16 flex justify-between items-center gap-5 h-24 animate-fade-in transition-all duration-500`}
         style={{ zIndex: '51' }}>
         <button
           onClick={() => scrollToSection('home')}
