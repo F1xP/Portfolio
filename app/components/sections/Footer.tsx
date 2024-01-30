@@ -19,7 +19,7 @@ const Footer: FC = () => {
 
   return (
     <>
-      <footer className="flex flex-col w-full items-center backdrop-blur-md shadow-xl bg-background dark:bg-dbackground justify-center border--2 text-text dark:text-dtext">
+      <footer className="flex flex-col w-full items-center backdrop-blur-md shadow-xl bg-background dark:bg-dbackground justify-center border--2 text-text dark:text-dtext transition-all duration-500">
         <div className="flex flex-col p-4 px-16">
           <Message />
           <div className="flex flex-row justify-center gap-20 flex-wrap">
@@ -62,7 +62,7 @@ const Footer: FC = () => {
             </div>
           </div>
         </div>
-        <div className="h-fit p-2 flex flex-row w-full items-center border-t-2 border-primary dark:border-accent bg-dbackground dark:bg-background text-dtext dark:text-text px-20 whitespace-pre-line">
+        <div className="h-fit p-2 flex flex-row w-full items-center border-t-2 border-primary dark:border-accent bg-dbackground dark:bg-background text-dtext dark:text-text px-20 whitespace-pre-line transition-all duration-500">
           <p className="mr-4">&copy; {new Date().getFullYear()} All rights reserved.</p>
           <SocialMedia />
         </div>

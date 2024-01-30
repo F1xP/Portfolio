@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Carousel from '../global/Carousel';
 import Section from '../global/Section';
 
-const ItemsArray = [
+const projectArray = [
   {
     id: 1,
     name: 'Camel Blackjack (Web)',
@@ -179,7 +179,7 @@ const Projects: FC = () => {
       divider="tilt"
       animation="animate-right">
       <Carousel
-        items={ItemsArray}
+        items={projectArray}
         autoScrollEnabled={true}
         autoScrollInterval={5000}
         isDark={false}

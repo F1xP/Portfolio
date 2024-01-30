@@ -99,7 +99,7 @@ const Carousel: FC<CarouselProps<any>> = ({ items, autoScrollInterval = 3000, au
                 }`}
                 style={{ width: `${width}px` }}
                 key={item.name}>
-                <div className="h-auto w-full flex justify-center flex-col items-center bg-background dark:bg-dbackground border-b border-primary dark:border-accent mx-auto whitespace-pre-line">
+                <div className="h-auto w-full flex justify-center flex-col items-center bg-background dark:bg-dbackground border-b border-primary dark:border-accent mx-auto whitespace-pre-line transition-all duration-500">
                   <p className="text-3xl text-text dark:text-dtext font-bold small-caps font-mono">{item.name}</p>
                 </div>
                 <div className="transition-all duration-500 cursor-pointe">

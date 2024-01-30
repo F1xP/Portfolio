@@ -4,6 +4,7 @@ import { Roboto } from 'next/font/google';
 import Navbar from './components/sections/Navbar';
 import Footer from './components/sections/Footer';
 import { Analytics } from '@vercel/analytics/react';
+import ThemeProvider from './components/global/ThemeProvider';
 
 const roboto = Roboto({
   weight: ['500', '900'],
@@ -26,10 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={`${roboto.className} relative bg-background dark:bg-dbackground`}>
-        <Navbar />
-        {children}
-        <Footer />
-        <Analytics />
+        <ThemeProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

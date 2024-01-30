@@ -13,7 +13,7 @@ const Home: FC = () => {
       divider="none"
       animation="animate-down">
       <div className="w-full h-fit flex justify-center z-20 flex-row items-center lg:flex-nowrap flex-wrap gap-10">
-        <p className="font-bold text-xl font-sans italic text-text dark:text-dtext">
+        <p className="font-bold text-xl font-sans italic text-text dark:text-dtext transition-all duration-500">
           My name is Lidor Ben Haim. I&apos;m a self-taught full-stack web developer with over 4 years of programming
           experience. I have been working with the MERN stack and Next.js mainly for the past 2 years. I&apos;m also
           open to exploring innovative tools and frameworks based on project needs. If you&apos;d like to learn more

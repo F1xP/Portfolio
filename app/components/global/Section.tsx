@@ -58,7 +58,7 @@ const Section: FC<SectionProps> = ({
     <>
       <section
         id={id}
-        className={`flex flex-col justify-center items-center w-full h-full relative overflow-hidden ${
+        className={`flex flex-col justify-center items-center w-full h-full relative overflow-hidden transition-all duration-500 ${
           isDark ? 'bg-dbackground dark:bg-background' : 'bg-background dark:bg-dbackground'
         } p-10 px-0 `}>
         {divider === 'waves' ? (
@@ -68,7 +68,7 @@ const Section: FC<SectionProps> = ({
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 1200 120"
               preserveAspectRatio="none"
-              className={`w-full absolute top-0 min-w-[1800px] ${
+              className={`w-full absolute top-0 min-w-[1800px] transition-all duration-500 ${
                 isDark ? 'fill-background dark:fill-dbackground' : 'fill-dbackground dark:fill-background'
               }`}>
               <path
@@ -77,7 +77,7 @@ const Section: FC<SectionProps> = ({
             </svg>
             {extraDivider === true && (
               <svg
-                className={`absolute bottom-0 w-full min-w-[1800px] ${
+                className={`absolute bottom-0 w-full min-w-[1800px] transition-all duration-500 ${
                   isDark ? 'fill-background dark:fill-dbackground' : 'fill-dbackground dark:fill-background'
                 }`}
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@ const Section: FC<SectionProps> = ({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1200 120"
             preserveAspectRatio="none"
-            className={`w-full absolute top-0 min-w-[1800px] ${
+            className={`w-full absolute top-0 min-w-[1800px] transition-all duration-500 ${
               isDark ? 'fill-background dark:fill-dbackground' : 'fill-dbackground dark:fill-background'
             }`}>
             <path
@@ -114,7 +114,7 @@ const Section: FC<SectionProps> = ({
           <h1
             className={`${
               SegaFont.className
-            } text-5xl flex flex-wrap justify-center gap-4 text-center tracking-wide -translate-y-2 ${
+            } transition-all duration-500 text-5xl flex flex-wrap justify-center gap-4 text-center tracking-wide -translate-y-2 ${
               isTextDark ? 'text-dtext dark:text-text' : 'text-text dark:text-dtext'
             }  mb-6`}>
             {text1}{' '}
